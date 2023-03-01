@@ -16,9 +16,17 @@ find_package(OpenGL REQUIRED)
 add_subdirectory(external/glfw)
 target_include_directories(${PROJECT_NAME}
         PUBLIC external/glfw/include
+        PUBLIC external/glm/
         PUBLIC ${GLEW_INCLUDE_DIRS}
         PRIVATE include/
         )
-target_link_directories(${PROJECT_NAME} PRIVATE external/glfw/src)
+target_link_directories(${PROJECT_NAME}
+        PRIVATE external/glfw/src
+        PRIVATE external/glm/test
+        )
 
-target_link_libraries(${PROJECT_NAME} glfw ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}
+        glfw
+        ${GLEW_LIBRARIES}
+        ${OPENGL_LIBRARIES}
+        )
